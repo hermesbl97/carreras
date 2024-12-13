@@ -1,2 +1,0 @@
-# carreras
-Repositorio de competiciones
