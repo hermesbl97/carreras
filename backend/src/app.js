@@ -47,8 +47,9 @@ app.put('/carreras/:carrerasId', async (req, res) => {
     res.status(204).json({});
 });
 
-app.delete('/carreras/:carrerasId', (req, res) => {
-
+app.delete('/carreras/:carrerasId', async (req, res) => {
+    await db('carreras').del().where({req.params.carrerasId});
+    res.status(204).json({});
 });
 
 app.listen(8080, () => {
