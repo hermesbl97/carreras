@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
+import { notifyError, notifySuccess} from './notifications.js';
 
 window.addRace = function () {
     const Competition = document.getElementById('Competition').value;
@@ -7,8 +8,9 @@ window.addRace = function () {
     const Date = document.getElementById('Date').value;
     const Last_Winner = document.getElementById('Last_Winner').value;
 
-    if (Competition=== ''){
-        alert('El nombre de la competición es un campo obligatorio');
+    if (Competition === '') {
+        notifyError('El nombre de la competición es un campo obligatorio');
+
         return;
     }
 
@@ -19,4 +21,12 @@ window.addRace = function () {
         Date: Date,
         Last_Winner: Last_Winner
     });
+
+    notifySuccess('La película ha sido registrada correctamente');
+
+    document.getElementById('Competition').value = '';
+    document.getElementById('Edition').value = '';
+    document.getElementById('Distance').value = '';
+    document.getElementById('Date').value = '';
+    document.getElementById('Last_Winner').value = '';
 };
