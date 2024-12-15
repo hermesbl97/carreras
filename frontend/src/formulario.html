@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script type="module" src="registro.js"></script>
+</head>
+<body>
+    <div class="container">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+              </svg></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Pruebas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.zaragozadeporte.com/CarrerasPopulares.asp" target="_blank">Zaragoza Deporte</a>
+              </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Otros</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" target="_blank">Contacto</a>
+              </li>
+          </ul>
+          
+
+        <h1>Registro de Carreras 2025</h1>
+          <form>
+            <div class="mb-3">
+              <label for="Competition" class="form-label">Competición</label>
+              <input type="text" class="form-control" id="Competition">
+              <div class="form-text">¿Qué carrera nos sugieres?</div>
+            </div>
+            <div class="col-md-6">
+              <label for="Edition" class="form-label">Edición</label>
+              <input type="text" class="form-control is-invalid" id="Edition" aria-describedby="validationServer03Feedback" required>
+              <div id="validationServer03Feedback" class="invalid-feedback">
+                Por favor introduce el valor en números romanos.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="Distance" class="form-label">Distancia (Kms)</label>
+              <input type="text" class="form-control" id="Distance">
+            </div>
+            <div class="mb-3">
+              <label for="Date" class="form-label">Fecha</label>
+              <input type="date" class="form-control" id="Date">
+            </div>
+            <div class="mb-3">
+              <label for="Last_Winner" class="form-label">Último ganador</label>
+              <input type="text" class="form-control" id="Last_Winner">
+            </div>
+            <button type="submit" class="btn btn-primary" onClick="addRace()">Registrar</button>
+          </form>
+
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+    </div>
+</body>
+</html>

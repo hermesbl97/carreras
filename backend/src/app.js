@@ -27,22 +27,22 @@ app.get('/carreras/:carrerasId', async (req, res) => {
 
 app.post('/carreras', async (req, res) => {
     await db('carreras').insert({
-        Competicion: req.body.Competition,
-        Edicion: req.body.Edition,
-        Distancia: req.body.Distance,
-        Fecha: req.body.Date,
-        Ultimo_Ganador: req.body.Last_Winner
+        Competition: req.body.Competition,
+        Edition: req.body.Edition,
+        Distance: req.body.Distance,
+        Date: req.body.Date,
+        Last_Winner: req.body.Last_Winner
     });
     res.status(201).json({});
 });
 
 app.put('/carreras/:carrerasId', async (req, res) => {
     await db('carreras').update({
-        Competicion: req.body.Competition,
-        Edicion: req.body.Edition,
-        Distancia: req.body.Distance,
-        Fecha: req.body.Date,
-        Ultimo_Ganador: req.body.Last_Winner
+        Competition: req.body.Competition,
+        Edition: req.body.Edition,
+        Distance: req.body.Distance,
+        Date: req.body.Date,
+        Last_Winner: req.body.Last_Winner
     }).where({Id: req.params.carrerasId});
     res.status(204).json({});
 });
