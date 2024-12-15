@@ -21,8 +21,8 @@ app.get('/carreras', async (req, res) => {
 });
 
 app.get('/carreras/:carrerasId', async (req, res) => {
-    const carreras = await db('carreras').select('*').where({Id: req.params.carrerasIdId}).first();
-    res.json(carreras);
+    const carreras = await db('carreras').select('*').where({Id: req.params.carrerasId}).first();
+    res.status(200).json(carreras);
 });
 
 app.post('/carreras', async (req, res) => {
@@ -33,7 +33,7 @@ app.post('/carreras', async (req, res) => {
         Fecha: req.body.Date,
         Ultimo_Ganador: req.body.Last_Winner
     });
-    res.json(201).json({});
+    res.status(201).json({});
 });
 
 app.put('/carreras/:carrerasId', async (req, res) => {
@@ -43,8 +43,8 @@ app.put('/carreras/:carrerasId', async (req, res) => {
         Distancia: req.body.Distance,
         Fecha: req.body.Date,
         Ultimo_Ganador: req.body.Last_Winner
-    }).where({Id: req.params.carrerasId})
-    res.json(200).json({});
+    }).where({Id: req.params.carrerasId});
+    res.status(204).json({});
 });
 
 app.delete('/carreras/:carrerasId', (req, res) => {
