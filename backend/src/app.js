@@ -1,39 +1,45 @@
 const express = require ('express');   
 const cors = require ('cors');
+const knex = require ('knex');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const carreras = [
-    {
-        'competicion': 'Maratón de Zaragoza',
-        'edicion': 'XVIII',
-        'fecha': '06.04.2025',
-        'distancia': 42
+const db = knex({
+    client: 'sqlite3',
+    connection: {
+        filename: 'carreras.db'
     },
-    {
-        'competicion': 'Carrera del Ebro',
-        'edicion': 'XVII',
-        'fecha': '16.02.2025',
-        'distancia': 25 
-    },
-    {
-        'competicion': 'San Silvestre Zaragoza',
-        'edicion': 'XX',
-        'fecha': '31.12.2025',
-        'distancia': 5
-    }
-];
+    useNullAsDefault: true
+});
 
-app.get('/carreras', (req, res) => {
+
+app.get('/carreras', async (req, res) => {
+    const carreras = await db('carreras').select('*');
     res.json(carreras);
 });
 
-app.get('/carreras/:competicion', (req, res) => {
+app.get('/carreras/:carrerasId', async (req, res) => {
+    const carreras = await db('carreras').select('*').where({Id: req.params.carrerasIdId}).first();
+    res.json(carreras);
+});
+
+app.post('/carreras', async (req, res) => {
+    await db('carreras').insert({
+        Competicion: req.body.Competition,
+        Edicion: req.body.Edition,
+        Distancia: req.body.Distance,
+        Fecha: req.body.Date,
+        Ultimo_Ganador: req.body.Last_Winner
+    });
+    res.json(201).json({});
+});
+
+app.delete('/carreras/:carrerasId', (req, res) => {
 
 });
 
 app.listen(8080, () => {
     console.log("El backend ha iniciado en el puerto 8080"); 
-})
+});
