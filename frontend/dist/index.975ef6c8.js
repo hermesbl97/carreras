@@ -599,19 +599,34 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _easyCode = require("./easyCode");
 window.obtainCarreras = function() {
     (0, _axiosDefault.default).get('http://localhost:8080/carreras').then((response)=>{
         const carrerasList = response.data;
-        const carrerasUl = document.getElementById('carreras');
+        const carrerasTable = document.getElementById('tableBody');
         carrerasList.forEach((carrera)=>{
-            const li = document.createElement('li');
-            li.className = 'list-group-item list-group-item-info';
-            li.appendChild(document.createTextNode(carrera.Edition + ' ' + carrera.Competition + ' . ' + ' Tu cita es el ' + carrera.Date + ".  \xa1\xa1\xa1A por los " + carrera.Distance + " kil\xf3metros!!!" + "  Ser\xe1s capaz de imponerte a " + carrera.Last_Winner));
-            carrerasUl.appendChild(li);
+            const row = document.createElement('tr');
+            row.innerHTML = (0, _easyCode.td)(carrera.Competition) + (0, _easyCode.td)(carrera.Edition) + (0, _easyCode.td)(carrera.Distance) + (0, _easyCode.td)(carrera.Date) + (0, _easyCode.td)(carrera.Last_Winner);
+            carrerasTable.appendChild(row);
         });
     });
 };
 
-},{"axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["9mu7C","8lqZg"], "8lqZg", "parcelRequire94c2")
+},{"axios":"jo6P5","./easyCode":"2ho3j","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2ho3j":[function(require,module,exports,__globalThis) {
+const icons = Map();
+icons.set('edit', '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>');
+icons.set('delete', '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16"><path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/></svg>');
+const icon = function(iconName) {
+    return icons.get(iconName);
+};
+const td = function(text) {
+    return '<td>' + text + '</td>';
+};
+module.exports = {
+    icon,
+    td
+};
+
+},{}]},["9mu7C","8lqZg"], "8lqZg", "parcelRequire94c2")
 
 //# sourceMappingURL=index.975ef6c8.js.map
